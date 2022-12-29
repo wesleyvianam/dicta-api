@@ -46,7 +46,7 @@ public class ProjectController {
     public ResponseEntity<DetailedProjectData> create(@RequestBody @Valid CreateProjectData data, UriComponentsBuilder uriBuilder) {
         var project = new Project(data);
         repository.save(project);
-        var uri = uriBuilder.path("/api/project/{id}").buildAndExpand(project.getId()).toUri();
+        var uri = uriBuilder.path("/project/{id}").buildAndExpand(project.getId()).toUri();
         return ResponseEntity.created(uri).body(new DetailedProjectData(project));
     }
 
